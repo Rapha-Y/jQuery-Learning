@@ -2,14 +2,59 @@
 
 <html lang="us">
     <head>
+        <style>
+            .second_container {
+                display: none;
+            }
+            .jhins_favorite_container {
+                position: absolute;
+                font-size: 16px;
+                height: 100px;
+            }
+        </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
+            counter = 0;
             $(document).ready(function (){
                 $(".cloaking").click(function(){
-                    $(".sin_container").hide();
+                    $(".sin_container").toggle(1000);
+                    $(".second_container").show(1000);
                 })
-                $(".sight").dblclick(function (){
-                    $(".sin_container").show();
+                $(".sight").click(function (){
+                    $(".sin_container").toggle(1000);
+                    $(".second_container").toggle(1000);
+                    $(".third_container").slideToggle(1000).slideToggle(1000);
+                })
+                $(".bullet_counter").click(function (){
+                    if(counter < 3) {
+                        counter++;
+                        switch (counter) {
+                            case 1:
+                                counterToString = "one";
+                                break;
+                            case 2:
+                                counterToString = "two";
+                                break;
+                            case 3:
+                                counterToString = "three";
+                                break;
+                        }
+                        $(".jhins_favorite_container").animate({
+                            "font-size": "16px",
+                            "height": "100px",
+                        });
+                    } else {
+                        counter = 0;
+                        $(".jhins_favorite_container").animate({
+                            "font-size": "48px",
+                            "height": "400px",
+                            "width": "800px"
+                        }, function() {
+                            alert("You hit a critical!");
+                        });
+                        counterToString = "<h1>FOUR!!</h1>"
+                    }
+                    document.getElementById("shots_fired").innerHTML = counterToString;
                 })
             })
         </script>
@@ -20,7 +65,17 @@
             <div class="skill"><button class="cloaking">cast cloaking</button></div>
         </div>
         <div class="second_container">
-            <button class="sight">double click to cast sight</button>
+            <button class="sight">click sight</button>
+        </div>
+        <hr>
+        <div class="third_container">
+            I slide into or out of view when sight is cast
+        </div>
+        <hr>
+        <div class="jhins_favorite_container">
+            <div id="shots_fired">zero</div>
+            <button class="bullet_counter">shoot</button>
         </div>
     </body>
 </html>
+
