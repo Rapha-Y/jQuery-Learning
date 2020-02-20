@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="us">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function (){
+                $(".cloaking").click(function(){
+                    $(".sin_container").hide();
+                })
+                $(".sight").dblclick(function (){
+                    $(".sin_container").show();
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="sin_container">
+            <div class="assassin">I can disappear</div>
+            <div class="skill"><button class="cloaking">cast cloaking</button></div>
+        </div>
+        <div class="second_container">
+            <button class="sight">double click to cast sight</button>
+        </div>
+    </body>
+</html>
