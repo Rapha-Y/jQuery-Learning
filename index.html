@@ -106,6 +106,9 @@
                     }
                     current_sister.css({"color": "red"});
                 })
+                $("#ajax-call-button").click(function (){
+                    $("#ajax-div").load("sample-text.txt");
+                })
             })
         </script>
     </head>
@@ -160,6 +163,11 @@
                 <li id="sister" class="last">Juno</li>
             </ul>
             <button id="sister_selection">click me to selected a sister</button>
+        </div>
+        <hr>
+        <div id="ajax-div">
+            Please don't stab me<br>
+            <button id="ajax-call-button">stab 'em</button>
         </div>
     </body>
 </html>
