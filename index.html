@@ -22,6 +22,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script>
             counter = 0;
+            current_sister = null;
+            sister_counter = 0;
             $(document).ready(function (){
                 $(".cloaking").click(function(){
                     $(".sin_container").toggle(1000);
@@ -87,6 +89,23 @@
                         $("#colored_square").css("line-height", "300px");
                     }
                 })
+                $("#sister_selection").click(function (){
+                    if(current_sister == null) {
+                        current_sister = $("#sister_list").children().first();
+                        sister_counter++;
+                    } else {
+                        if(sister_counter < 3) {
+                            current_sister.css({"color": "black"});
+                            current_sister = current_sister.next();
+                            sister_counter++;
+                        } else {
+                            current_sister.css({"color": "black"});
+                            current_sister = $("#sister_list").children().first();
+                            sister_counter = 0;
+                        }
+                    }
+                    current_sister.css({"color": "red"});
+                })
             })
         </script>
     </head>
@@ -132,6 +151,15 @@
         <hr>
         <div id="color_container">
             <div id="colored_square">click me to change my color and size</div>
+        </div>
+        <hr>
+        <div id="sister_container">
+            <ul id="sister_list">
+                <li id="sister" class="first">Shanna</li>
+                <li id="sister">Thea</li>
+                <li id="sister" class="last">Juno</li>
+            </ul>
+            <button id="sister_selection">click me to selected a sister</button>
         </div>
     </body>
 </html>
