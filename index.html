@@ -109,7 +109,13 @@
                 $("#ajax-call-button").click(function (){
                     $("#ajax-div").load("sample-text.txt");
                 })
-            })
+                $("#jojo-filter").on("keyup", function() {
+                    var value = $(this).val().toLowerCase();
+                    $("#jojo-table tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+            });
         </script>
     </head>
     <body>
@@ -168,6 +174,61 @@
         <div id="ajax-div">
             Please don't stab me<br>
             <button id="ajax-call-button">stab 'em</button>
+        </div>
+        <hr>
+        <div id="jojo-mc-table-container">
+            <input id="jojo-filter" type="text" placeholder="filter"><br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Nickname</th>
+                    </tr>
+                </thead>
+                <tbody id="jojo-table">
+                    <tr>
+                        <td>Jonathan</td>
+                        <td>Joestar</td>
+                        <td>Jojo</td>
+                    </tr>
+                    <tr>
+                        <td>Joseph</td>
+                        <td>Joestar</td>
+                        <td>Jojo</td>
+                    </tr>
+                    <tr>
+                        <td>Jotaro</td>
+                        <td>Kujo</td>
+                        <td>Jojo</td>
+                    </tr>
+                    <tr>
+                        <td>Josuke</td>
+                        <td>Higashikata</td>
+                        <td>Jojo</td>
+                    </tr>
+                    <tr>
+                        <td>Giorno</td>
+                        <td>Giovanna</td>
+                        <td>Giogio</td>
+                    </tr>
+                    <tr>
+                        <td>Jolyne</td>
+                        <td>Cujoh</td>
+                        <td>Jojo</td>
+                    </tr>
+                    <tr>
+                        <td>Jonathan</td>
+                        <td>Joestar</td>
+                        <td>Johnny</td>
+                    </tr>
+                    <tr>
+                        <td>Josuke</td>
+                        <td>Higashikata</td>
+                        <td>Gappy</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </body>
 </html>
