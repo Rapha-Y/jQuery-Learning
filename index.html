@@ -7,9 +7,16 @@
                 display: none;
             }
             .jhins_favorite_container {
-                position: absolute;
+                position: relative;
                 font-size: 16px;
                 height: 100px;
+            }
+            #colored_square {
+                background-color: pink;
+                height: 300px;
+                width: 300px;
+                line-height: 300px;
+                text-align: center;
             }
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -54,7 +61,31 @@
                         });
                         counterToString = "<h1>FOUR!!</h1>"
                     }
-                    document.getElementById("shots_fired").innerHTML = counterToString;
+                    $("#shots_fired").html(counterToString);
+                })
+                $(".alert_call").click(function (){
+                    alert($(".alert_input").val());
+                })
+                $("#made_in_heaven").click(function (){
+                    $("#jonathan_joestar_pic").attr("src", "https://static.jojowiki.com/images/7/74/JohnnyAv.png");
+                    $("#made_in_heaven").hide();
+                })
+                $("#add_item").click(function (){
+                    $("#generic_ordered_list").append("<li>List item</li>");
+                })
+                $("#clear_list").click(function (){
+                    $("#generic_ordered_list").empty();
+                })
+                $("#colored_square").click(function (){
+                    if($("#colored_square").css("background-color") == "rgb(255, 192, 203)") {
+                        $("#colored_square").css("background-color", "rgb(255, 0, 0)");
+                        $("#colored_square").height(500).width(500);
+                        $("#colored_square").css("line-height", "500px");
+                    } else {
+                        $("#colored_square").css("background-color", "rgb(255, 192, 203)");
+                        $("#colored_square").height(300).width(300);
+                        $("#colored_square").css("line-height", "300px");
+                    }
                 })
             })
         </script>
@@ -75,6 +106,32 @@
         <div class="jhins_favorite_container">
             <div id="shots_fired">zero</div>
             <button class="bullet_counter">shoot</button>
+        </div>
+        <hr>
+        <div class="fifth_container">
+            Alert text: <input type="text" class="alert_input">
+            <button class="alert_call">show alert</button>
+        </div>
+        <hr>
+        <div class="another_container">
+            Jonathan Joestar: <br>
+            <img id="jonathan_joestar_pic" src="https://static.jojowiki.com/images/thumb/2/23/JonathanAv.png/120px-JonathanAv.png"><br>
+            <button id="made_in_heaven">pucci the universe</button>
+        </div>
+        <hr>
+        <div id="list_container">
+            This is a list:<br>
+            <ol id="generic_ordered_list">
+                <li>List item</li>
+                <li>List item</li>
+                <li>List item</li>
+            </ol><br>
+            <button id="add_item">add item</button>
+            <button id="clear_list">clear list</button>
+        </div>
+        <hr>
+        <div id="color_container">
+            <div id="colored_square">click me to change my color and size</div>
         </div>
     </body>
 </html>
